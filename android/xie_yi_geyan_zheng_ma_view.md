@@ -4,7 +4,8 @@
 虽说很少地方用，但是看到稿子上有，写一个备用。
 
 * no picture you say a bird
-![验证码view](valicode20160425154153.png)
+
+![验证码view](images/valicode20160425154153.png)
 
 * show me your code
 
