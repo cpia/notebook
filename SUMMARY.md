@@ -6,7 +6,7 @@
    * [本地配置多个ssh-key](other/ben_di_pei_zhi_duo_ge_ssh_-_key.md)
 * [android](android/android.md)
    * [事件分发](android/shi_jian_fen_fa.md)
-   * 自定义方格子editText
+   * [自定义方格子editText](android/zi_ding_yi_fang_ge_zi_edittext.md)
 * [ios](ios/ios.md)
    * [MRC简单用法](ios/mrcjian_dan_yong_fa.md)
 
