@@ -1,7 +1,7 @@
 # 自定义方格子editText
 
 * 先看效果
-![方格子EditText](square20160425152501.png)
+![方格子EditText](images/square20160425152501.png)
 
 项目中可能会用到，先写上来。根据自己项目要求在做具体修改。
 
