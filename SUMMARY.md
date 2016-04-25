@@ -7,4 +7,5 @@
 * [android](android.md)
    * [事件分发](shi_jian_fen_fa.md)
 * [ios](ios.md)
+   * MRC简单用法
 
