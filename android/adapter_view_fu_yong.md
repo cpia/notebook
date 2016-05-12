@@ -52,9 +52,8 @@ class RecycleBin:
          //这里在调用getView().convertView就不等于null了.就可以进入viewholder模式
         final View child = mAdapter.getView(position, scrapView, this);
         if (scrapView != null) {
-        //如果getview返回的view发生了变化，则缓存下来
-            if (child != scrapView) {
-               
+        //如果getview返回的view发生了变化，则缓存下来.否则convertView==null了
+            if (child != scrapView) {               
                 mRecycler.addScrapView(scrapView, position);
             } else {
                 isScrap[0] = true;
