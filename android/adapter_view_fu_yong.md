@@ -1,19 +1,19 @@
 # adapter view 复用
 
 AbsListView->RecycleBin
-
+```
 class RecycleBin:
 
-  /**
-  存储的是第一次显示在屏幕上的View
-  */
+  
+  //存储的是第一次显示在屏幕上的View  
    private View[] mActiveViews = new View[0];
    
-   有可能被adapter复用的View
-   
-     private ArrayList<View>[] mScrapViews;
-     
-    在Listview中
+   //有可能被adapter复用的View   
+    private ArrayList&lt;View&gt;[] mScrapViews;
+ ```    
+    
+在ListView中
+```
   protected void layoutChildren() {
     
             // 如果数据有改变则把当前的itemview添加 到mScrapViews中
@@ -27,8 +27,9 @@ class RecycleBin:
             } else {
                 recycleBin.fillActiveViews(childCount, firstPosition);
             }
-            }
-            
+    }
+       recycleBin：
+         //把当前显示的view添加 到mActiveViews
         void fillActiveViews(int childCount, int firstActivePosition) {
           final View[] activeViews = mActiveViews;
             for (int i = 0; i < childCount; i++) {
@@ -43,9 +44,12 @@ class RecycleBin:
                 }
             }
         }
-        
+ ```       
   getView调用：
   AbsListView中
+  
+  
+  ```
    View obtainView(int position, boolean[] isScrap) {
      //根据位置到缓存中查找
          final View scrapView = mRecycler.getScrapView(position);
@@ -56,11 +60,11 @@ class RecycleBin:
             if (child != scrapView) {               
                 mRecycler.addScrapView(scrapView, position);
             } else {
-                isScrap[0] = true;
-
-              
+                isScrap[0] = true;              
                 child.dispatchFinishTemporaryDetach();
             }
         }
         return child;
    }
+ ```  
+   
