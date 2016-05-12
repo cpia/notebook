@@ -1,4 +1,4 @@
-# LayoutInflater源码分析
+# LayoutInflater分析
 
 
 LayoutInflater的二个inflate方法：
@@ -70,3 +70,13 @@ LayoutInflater的二个inflate方法：
               return result;      
  }
  ```
+ 
+##在定义view中对onMeasure()方法的处理
+都会根据测量模式做不同处理
+
+
+> MeasureSpec.EXACTLY == LayoutParams. MATCH_PARENT或设置的一个精确值
+
+> MeasureSpec.AT_MOST == LayoutParams. WRAP_CONTENT
+
+可以知晓测量时依赖于LayoutParams。而inflate(resId,null)是不会设置LayoutParams的。
