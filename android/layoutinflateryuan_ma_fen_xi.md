@@ -1,4 +1,4 @@
-# LayoutInflater分析
+# inflate方法用哪个
 
 
 LayoutInflater的二个inflate方法：
@@ -80,3 +80,5 @@ LayoutInflater的二个inflate方法：
 > MeasureSpec.AT_MOST == LayoutParams. WRAP_CONTENT
 
 可以知晓测量时依赖于LayoutParams。而inflate(resId,null)是不会设置LayoutParams的。
+
+在listview中出现item设置的宽高没有被处理的时候可以检查一下是否正确调用了inflate方法
