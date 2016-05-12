@@ -2,10 +2,10 @@
 
 
 LayoutInflater的二个inflate方法：
-*  public View inflate( int resource,  ViewGroup root) 
-*   public View inflate(int resource, ViewGroup root, boolean attachToRoot)
+-  public View inflate( int resource,  ViewGroup root) 
+-   public View inflate(int resource, ViewGroup root, boolean attachToRoot)
 
-```
+```java
 测试
  protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +31,7 @@ LayoutInflater的二个inflate方法：
 
 分析ABC
 三个方法最后都会调用下面这个：
-```
+```java
  public View inflate(XmlPullParser parser, ViewGroup root, boolean attachToRoot) {
   ...
    View result = root;
@@ -71,7 +71,7 @@ LayoutInflater的二个inflate方法：
  }
  ```
  
-##在定义view中对onMeasure()方法的处理
+## 在定义view中对onMeasure()方法的处理
 都会根据测量模式做不同处理
 
 
