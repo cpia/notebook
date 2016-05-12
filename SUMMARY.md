@@ -9,7 +9,7 @@
    * [自定义方格子editText](android/zi_ding_yi_fang_ge_zi_edittext.md)
    * [写一个验证码view](android/xie_yi_geyan_zheng_ma_view.md)
    * [adapter view 复用](android/adapter_view_fu_yong.md)
-   * [LayoutInflater分析](android/layoutinflateryuan_ma_fen_xi.md)
+   * [inflate方法用哪个](android/layoutinflateryuan_ma_fen_xi.md)
 * [ios](ios/ios.md)
    * [MRC简单用法](ios/mrcjian_dan_yong_fa.md)
 
