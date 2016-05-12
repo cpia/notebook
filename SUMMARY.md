@@ -8,6 +8,7 @@
    * [事件分发](android/shi_jian_fen_fa.md)
    * [自定义方格子editText](android/zi_ding_yi_fang_ge_zi_edittext.md)
    * [写一个验证码view](android/xie_yi_geyan_zheng_ma_view.md)
+   * adapter view 复用
 * [ios](ios/ios.md)
    * [MRC简单用法](ios/mrcjian_dan_yong_fa.md)
 
