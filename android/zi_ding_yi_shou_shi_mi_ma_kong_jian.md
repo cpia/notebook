@@ -1,5 +1,10 @@
 # 自定义手势密码控件
 
+
+###说明
+手势密码这个有2种方法实现，一个是直接继承view然后在里面画出来，并做事件处理。另一种就是用viewgroup来包了。奈何本人没上过数学，所以我采取后者。
+
+
 先看效果图
 
 ![错误状态](lock_view_error.png)
@@ -555,5 +560,126 @@
     }
 }
  ```
+  顶部的指示器
   
+  ```java
+  /**
+ * 主要就是 一个9位的数组。如果不设置密码的时候，全部都是0
+ * 如果某位设置了密码。则把数组对应的位置值设置1
+ * eg: 没设置密码时
+ * passwd的内容 0 0 0 0 0 0 0 0 0
+ * 设置密码32147
+ * passwd的内容 1 1 1 1 0 0 1 0 0
+ * 最后在绘制的时候根据passwd的每个值0或1来绘制实心或空心圆。
+ * 因为只是做顶部的展示用，没有其它，所以就这么来
+ */
+public class MiniLockView extends View {
+    private Paint mPaint;
+    private final byte[] passwd = new byte[9];
+    private int mColNum;
+
+    public MiniLockView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+
+        mPaint = new Paint();
+        mColNum = 3;
+        Arrays.fill(passwd, (byte) 0);
+    }
+
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        int pwdColor = Color.parseColor("#0094ff");
+
+        int radius =20;
+        int count = passwd.length;
+        for (int i = 0; i < count; i++) {
+            int row = i / mColNum;
+            int col = i % mColNum;
+            final byte b = passwd[i];
+            //如果当前位为0，则表示譔位不是密码位
+            //如果为1，表示是密码位
+            if (b == 0) {
+                mPaint.setStyle(Paint.Style.STROKE);
+                mPaint.setColor(Color.LTGRAY);
+            } else {
+                mPaint.setStyle(Paint.Style.FILL);
+                mPaint.setColor(pwdColor);
+            }
+            int x= (radius * 2+radius) * (col+1 );
+            int y = (radius * 2+radius) * (row+1 );
+            canvas.drawCircle(x,y , radius, mPaint);
+        }
+
+    }
+
+    /**
+     * 设置密码
+     * @param pwd
+     */
+    public void setPasswd(int[] pwd) {
+        Arrays.fill(passwd, (byte) 0);
+        final int length = pwd.length;
+        for (int i = 0; i < length; i++) {
+            final int index = pwd[i] - 1;
+            this.passwd[index] = 1;
+        }
+        invalidate();
+    }
+}
+  ```
   
+布局文件：
+
+```java
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+              xmlns:tools="http://schemas.android.com/tools"
+              android:background="#000000"
+                android:gravity="center"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+<com.example.xp.mycustomviewapplication.MiniLockView
+
+android:id="@+id/mini_lock_view"
+    android:layout_width="100dp"
+    android:layout_height="100dp"/>
+
+    <com.example.xp.mycustomviewapplication.GestureLockView
+        android:id="@+id/lock_view"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
+```
+MainActivity的oncreate
+
+```java
+     final GestureLockView gestureLockView = (GestureLockView) findViewById(R.id.lock_view);
+        final MiniLockView miniLockView = (MiniLockView) findViewById(R.id.mini_lock_view);
+         int[] a =new int[]{2, 6, 9, 8, 7, 4, 2};
+        gestureLockView.setPasswd(a);
+        gestureLockView.setListener(new GestureLockView.LockListener() {
+            @Override
+            public void onComplete(int[] a) {
+                if (a.length !=0)
+                  Toast.makeText(MainActivity.this, "onComplete:"+ Arrays.toString(a), Toast.LENGTH_SHORT).show();
+                miniLockView.setPasswd(a);
+            }
+
+            @Override
+            public void onSuccess() {
+            }
+
+            @Override
+            public void onError(int[] integers) {
+            }
+        });
+```
+
+###写在最后 
+本人也是一个自定义view的low，学习中，代码写得不是很严谨，还有些小东西没做处理。主要是学习一下思路。其它的在基于项目中的需求在修改下就好了。
