@@ -66,7 +66,9 @@
         mPaint.setStrokeWidth(2);
     }
    
-
+    /** 
+    不想用枚举，这玩意好
+    */
     @IntDef({NORMAL, DOWN, ERROR,SUCCESS})
     @Retention(RetentionPolicy.SOURCE)
     public @interface Status {
