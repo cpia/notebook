@@ -7,9 +7,9 @@
 
 先看效果图
 
-![错误状态](lock_view_error.png)
+![错误状态](images/lock_view_error.png)
 
-![成功状态](lock_view_success.png)
+![成功状态](images/lock_view_success.png)
 
 分析实现：
 上面的指示部分后面在说，先看主体部分
