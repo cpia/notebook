@@ -10,6 +10,7 @@
    * [写一个验证码view](android/xie_yi_geyan_zheng_ma_view.md)
    * [adapter view 复用](android/adapter_view_fu_yong.md)
    * [inflate方法用哪个](android/layoutinflateryuan_ma_fen_xi.md)
+   * 自定义手势密码控件
 * [ios](ios/ios.md)
    * [MRC简单用法](ios/mrcjian_dan_yong_fa.md)
 
